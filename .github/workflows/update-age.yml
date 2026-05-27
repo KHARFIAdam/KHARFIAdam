@@ -1,0 +1,67 @@
+name: 🎂 Update Age in README
+
+on:
+  schedule:
+    # Tourne chaque jour à 00:01 UTC — met à jour l'âge le jour du birthday
+    - cron: "1 0 * * *"
+  workflow_dispatch: # Lancement manuel possible depuis l'onglet Actions
+
+jobs:
+  update-age:
+    name: Recalculate & Update Age
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Calculate age and update README
+        run: |
+          python3 - <<'EOF'
+          import re
+          from datetime import date
+
+          BIRTHDATE = date(2003, 7, 28)
+          today     = date.today()
+
+          # Calcul de l'âge exact
+          age = today.year - BIRTHDATE.year - (
+              (today.month, today.day) < (BIRTHDATE.month, BIRTHDATE.day)
+          )
+
+          print(f"Today: {today}  |  Birthdate: {BIRTHDATE}  |  Age: {age}")
+
+          with open("README.md", "r", encoding="utf-8") as f:
+              content = f.read()
+
+          # Repère la ligne par l'emoji 🎂 et remplace le nombre qui suit
+          updated = re.sub(
+              r'(│\s+🎂\s+)\d+( ans)',
+              rf'\g<1>{age}\2',
+              content
+          )
+
+          if updated == content:
+              print("Age already up to date, no changes needed.")
+          else:
+              with open("README.md", "w", encoding="utf-8") as f:
+                  f.write(updated)
+              print(f"README updated: age is now {age}.")
+          EOF
+
+      - name: Commit & push if age changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet README.md || (
+            git add README.md &&
+            git commit -m "chore: update age to $(python3 -c \"
+          from datetime import date
+          b = date(2003,7,28)
+          t = date.today()
+          print(t.year - b.year - ((t.month,t.day)<(b.month,b.day)))
+          \")" &&
+            git push
+          )

@@ -10,10 +10,10 @@
 
 <br/>
 
-<!-- ══════════════════════ BADGES ══════════════════════ -->
+<!-- ══════════════════════ BADGES ══════════════════════ 
 ![Profile Views](https://komarev.com/ghpvc/?username=KHARFIAdam&style=for-the-badge&color=7c3aed&labelColor=0d1117&label=VISITORS)
 &nbsp;
-![GitHub followers](https://img.shields.io/github/followers/KHARFIAdam?style=for-the-badge&color=22d3ee&labelColor=0d1117&logo=github&label=FOLLOWERS)
+![GitHub followers](https://img.shields.io/github/followers/KHARFIAdam?style=for-the-badge&color=22d3ee&labelColor=0d1117&logo=github&label=FOLLOWERS)-->
 
 </div>
 

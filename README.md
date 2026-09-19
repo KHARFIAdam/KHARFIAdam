@@ -38,7 +38,7 @@
 
 <div align="center">
 
-*✦ &nbsp;"The cosmos is within us. We are made of star-stuff." &nbsp;— Carl Sagan &nbsp;✦*
+*✦ &nbsp;"Time passes, people move... Like a river's flow, it never ends. A childish mind will turn to noble ambition... Young love will become deep affection... The clear water's surface reflects growth... Now listen to the Serenade of Water to reflect upon yourself..." &nbsp;— Sheik &nbsp;✦*
 
 <br/>
 
